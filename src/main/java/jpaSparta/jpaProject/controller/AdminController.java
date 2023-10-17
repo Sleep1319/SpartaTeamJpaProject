@@ -13,26 +13,32 @@ public class AdminController {
      * 사이트 이동 맵핑 전용
      * 추후 상세 맵핑 이름 기능 수정 필요
      */
+
+    //게시판 관리 html
     @GetMapping("boardManagement")
     public String boardManagement() {
         return "admin/boardManagement";
     }
 
+    //공지사항 html
     @GetMapping("dashboard")
     public String dashboard() {
         return "admin/dashboard";
     }
 
+    //회원 관리 html
     @GetMapping("memberManagement")
     public String memberManagement() {
         return "admin/memberManagement";
     }
 
-    @GetMapping("oderManagement")
-    public String oderManagement() {
-        return "admin/oderManagement";
+    //주문 관리 html
+    @GetMapping("orderManagement")
+    public String orderManagement() {
+        return "admin/orderManagement";
     }
 
+    //상품 관리 html
     @GetMapping("productManagement")
     public String productManagement() {
         return "admin/productManagement";
