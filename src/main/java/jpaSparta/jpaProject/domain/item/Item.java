@@ -1,8 +1,8 @@
 package jpaSparta.jpaProject.domain.item;
 
-import jpaSparta.jpaProject.domain.Category;
+import jpaSparta.jpaProject.domain.CategoryItem;
 import jpaSparta.jpaProject.domain.OrderItem;
-//import jpaSparta.jpaProject.exception.NotEnoughStockException;
+import jpaSparta.jpaProject.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
 

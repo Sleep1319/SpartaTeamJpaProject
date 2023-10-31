@@ -1,10 +1,93 @@
+<!--2023.10.19.DH-->
+<!--2023.10.23.DH-->
+<!--2023.10.19.DH-->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
+<link rel="stylesheet" href="/css/login.css">
 
+<body>
+<!-- Navigation-->
+<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+
+<div class="container">
+    <section class="contents">
+        <section class="login_area">
+            <div class="login_area_inner">
+                <h2 class="fw-bold fs-2">로그인</h2>
+                <form method="post" action="/login" onsubmit="submitForm();">
+                    <fieldset>
+                        <input type="text" class="login_input_id mx-auto" placeholder="ID" name="user_id">
+                        <input type="password" class="login_input_pwd mx-auto" placeholder="PWD" name="pw">
+                        <div class="find_area">
+                            <a href="findId.html">아이디 찾기</a>
+                            <span>/</span>
+                            <a href="findPwd.html">비밀번호 찾기</a>
+                        </div>
+                        <input type="submit" value="로그인" class="btn_login">
+                    </fieldset>
+                </form>
+                <div class="register_area mx-auto">
+                    <p>
+                        아직 회원이 아니신가요?
+                        <br>
+                        고객님을 위한 다양한 혜택이 준비되어 있습니다.
+                    </p>
+                    <form method="get" action="/signup">
+                        <input type="submit" value="회원가입" class="btn_login1">
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+<!-- Footer-->
+<div th:replace="fragments/footer :: footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    var message = "[[${message}]]";
+    if (message && message.trim() !== "") {
+        alert(message);
+    }
+</script>
+<!--<script>-->
+<!--    function submitForm() {-->
+<!--        event.preventDefault(); // 폼 기본 동작 중단-->
+<!--        var formData = {-->
+<!--            user_id: document.querySelector('input[name="user_id"]').value,-->
+<!--            pw: document.querySelector('input[name="pw"]').value,-->
+<!--        };-->
+
+<!--        // JSON 데이터 전송-->
+<!--        fetch('/login', {-->
+<!--            method: 'POST',-->
+<!--            headers: {-->
+<!--                'Content-Type': 'application/json'-->
+<!--            },-->
+<!--            body: JSON.stringify(formData)-->
+<!--        })-->
+<!--            .then(response => {-->
+<!--                if (response.ok) {-->
+<!--                    return response.json();-->
+<!--                } else {-->
+<!--                    throw new Error('서버 오류');-->
+<!--                }-->
+<!--            })-->
+<!--            .then(data => {-->
+<!--                alert(data.message); // 서버에서 받은 메시지 출력-->
+<!--                if(data.status === 200) {-->
+<!--                    window.location.href = '/';-->
+<!--                } else {-->
+<!--                    window.location.reload()-->
+<!--                }-->
+<!--            })-->
+<!--            .catch(error => {-->
+<!--                alert('오류: ' + error.message);-->
+<!--            });-->
+<!--    }-->
+<!--</script>-->
 </body>
 </html>
