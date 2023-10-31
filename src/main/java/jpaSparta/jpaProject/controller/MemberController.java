@@ -37,6 +37,13 @@ public class MemberController {
         return "member/login";
     }
 
+    //로그아웃
+    @GetMapping("/logout")
+    public String logout(Model model, HttpSession session) {
+        session.invalidate();
+        return "home/index";
+    }
+
     //아이디 찾기 html
     @GetMapping("/findId")
     public String findId() {

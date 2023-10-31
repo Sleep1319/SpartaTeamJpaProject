@@ -15,4 +15,12 @@ public class HomeController {
 
         return "home/index";
     }
+
+    @GetMapping(value = "productsDetail.html")
+    public String productsDetail() {
+        log.info("productsDetail controller");
+        return "home/productsDetail";
+    }
+
+
 }
