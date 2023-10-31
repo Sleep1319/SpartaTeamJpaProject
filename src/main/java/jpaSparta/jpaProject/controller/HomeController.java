@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class HomeController {
 
-    @GetMapping
+
+    @GetMapping("/")
     public String hello(Model model) {
 
         return "home/index";

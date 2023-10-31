@@ -20,9 +20,6 @@ public class Delivery {
     @Column(name = "delivery_status")
     private DeliveryStatus status;
 
-    @Column(name = "delivery_post")
-    private String post;
-
     @Embedded
     @Column(name = "delivery_address")
     private Address address;//주서 정보에 대한 값 뭐로하지 //일단 Address 클래스 선언 //상의 필요

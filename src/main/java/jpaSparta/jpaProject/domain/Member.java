@@ -1,16 +1,18 @@
 package jpaSparta.jpaProject.domain;
 
-import jpaSparta.jpaProject.domain.board.Board;
+//import jpaSparta.jpaProject.domain.board.Comment;
+//import jpaSparta.jpaProject.domain.board.Review;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "member")
+@DynamicUpdate
 @Getter @Setter
 public class Member {
     @Id
@@ -30,18 +32,18 @@ public class Member {
     @Column(name = "user_phone")
     private String phone;
 
-    @Column(name = "user_birth")
-    private Date birth;//타입 util인지 sql인지 구분 부탁
+//    @Column(name = "user_birth")
+//    private Date birth;//타입 util인지 sql인지 구분 부탁
 
-    @Column(name = "user_post")
-    private String post;
-
-    @Column(name = "user_addr")
-    private String addr;
+    @Embedded
+    private Address address;
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
-    private List<Board> boards = new ArrayList<>();
+//    @OneToMany(mappedBy = "member")
+//    private List<Review> reviews = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "member")
+//    private List<Comment> comments = new ArrayList<>();
 }

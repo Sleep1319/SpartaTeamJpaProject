@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="/itemInsert">
+        <input type="text" name="name" placeholder="아이템 이름">
+        <input type="number" name="price" placeholder="아이템 가격">
+        <input type="number" name="stockQuantity" placeholder="수량">
+        <input type="text" name="info" placeholder="정보">
+        <input type="text" name="category" placeholder="Food">
+        <input type="text" name="cateDetail" placeholder="세부카테">
+        <input type="submit" value="전송">
+    </form>
+    <script>
+        var message = "[[${message}]]";
+        if (message && message.trim() !== "") {
+            alert(message);
+        }
+    </script>
+</body>
+</html>

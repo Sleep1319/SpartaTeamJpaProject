@@ -2,6 +2,7 @@ package jpaSparta.jpaProject.domain;
 
 import lombok.Getter;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 
@@ -9,19 +10,21 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Getter
 public class Address {
-
-    private String city;
-    private String street;
+    @Column(name = "addr")
+    private String addr;
+    @Column(name = "detail_addr")
+    private String detail_addr;
+    @Column(name = "zipcode")
     private String zipcode;
 
     protected Address() {
 
     }
 
-    public Address(String city,String street,String zipcode) {
-        this.city=city;
-        this.street=street;
-        this.zipcode=zipcode;
+    public Address(String addr,String detail_addr,String zipcode) {
+        this.addr = addr;
+        this.detail_addr = detail_addr;
+        this.zipcode = zipcode;
     }
 }
 

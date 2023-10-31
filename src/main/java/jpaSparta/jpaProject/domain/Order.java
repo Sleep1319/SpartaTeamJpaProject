@@ -30,7 +30,7 @@ public class Order {
     private Delivery delivery;
 
     @Column(name = "order_date")
-    private LocalDateTime localDateTime;
+    private LocalDateTime order_date;
 
     @Column(name = "order_status")
     @Enumerated(EnumType.STRING)
@@ -39,5 +39,50 @@ public class Order {
     //---------------------------
     public void setMember(Member member){
         this.member = member;
+        member.getOrders().add(this);
     }
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
+
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) { // ... = 가변인자 오더아이템들의 들어온 정보수만큼 증가 되게 하기 위합
+        Order order = new Order();
+        order.setMember(member);
+        order.setDelivery(delivery);
+
+        for( OrderItem orderItem : orderItems) {
+            order.addOrderItem(orderItem);
+        }
+
+        order.setStatus(OrderStatus.ORDER);
+        order.setOrder_date(LocalDateTime.now());
+
+        return order;//오더 정보를 리턴
+    }
+
+    public void cancel() {
+        if (delivery.getStatus() == DeliveryStatus.COMP) {
+            throw new IllegalStateException("이미 배송 완료된 상품은 취소가 불가함");
+        }
+
+        this.setStatus(OrderStatus.CANCLE);
+        for (OrderItem orderItem : orderItems) {
+            orderItem.cancel();
+        }
+    }
+
+        public int getTotalPrice() {
+            int totalPrice = 0;
+            for( OrderItem orderItem : orderItems ) {
+                totalPrice += orderItem.getTotalPrice();
+            }
+            return totalPrice;
+        }
 }
