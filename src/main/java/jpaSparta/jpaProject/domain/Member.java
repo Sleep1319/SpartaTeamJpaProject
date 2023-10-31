@@ -20,7 +20,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", unique = true)
     private String user_id;
 
     @Column(name = "user_pw")
@@ -40,6 +40,9 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
+
+//    @Enumerated(EnumType.STRING)
+//    private Role role;
 
 //    @OneToMany(mappedBy = "member")
 //    private List<Review> reviews = new ArrayList<>();
